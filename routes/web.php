@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\yayinevi\adminIndexController;
 use App\Http\Controllers\admin\yazar\yazarIndexController;
 use App\Http\Controllers\admin\kitab\kitabIndexController;
 use App\Http\Controllers\admin\slider\sliderIndexController;
+use App\Http\Controllers\api\productApiController;
 use App\Http\Controllers\front\basket\basketIndexController;
 use App\Http\Controllers\front\frontIndexController;
 use App\Http\Controllers\front\cat\catIndexController;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ContactUsFormController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\card\addBookCardController;
 use App\Http\Controllers\comment\commentController;
 use Illuminate\Support\Facades\Request;
 /*
@@ -54,8 +56,6 @@ Route::get('/contact', [ContactUsFormController::class, 'createForm'])->name('co
 Route::post('/contact', [ContactUsFormController::class, 'ContactUsForm'])->name('contact.store');
 Route::get('/kitap/detay/{selflink}', [frontKitapIndexController::class, 'index'])->name('kitap.detay');
 Route::post('ktap/{id}/comment', [frontKitapIndexController::class, 'store'])->name('books.store_comment');
-// Route::post('/comments/{id}', [commentController::class,'store'])->name('comment');
-// Route::get('/comments/{id}', [commentController::class,'show'])->name('show');  
 
 
 
@@ -117,3 +117,19 @@ Route::post('/ajax/post', function () {
 })->name('ajax.post');
 
 
+Route::group(['as' => 'api.', 'prefix' => 'api'], function () {
+    Route::get('product-list', [productApiController::class, 'index'])->name('product_list');
+    Route::get('store', [productApiController::class, 'create'])->name('book.create');
+
+    Route::post('store', [productApiController::class, 'store'])->name('book.store');
+    Route::get('/product/{id}', [productApiController::class, 'show'])->name('book.show');
+    Route::get('/update/{id}', [productApiController::class, 'edit'])->name('book.edit');
+
+    Route::post('/update/{id}', [productApiController::class, 'update'])->name('book.edit.post');
+    Route::get('/delete/{id}', [productApiController::class, 'destroy'])->name('book.delete');
+});
+
+Route::group(['as'=>'card.','prefix'=>'card'],function(){
+    Route::get('',[addBookCardController::class,'index'])->name('card_product_list');
+    Route::get('add/{id}',[addBookCardController::class,'index'])->name('add_product_card');
+});

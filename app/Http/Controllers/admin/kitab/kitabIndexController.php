@@ -9,6 +9,7 @@ use App\Models\Yazarlar;
 use Illuminate\Http\Request;
 use App\Helper\mHelper;
 use App\Models\Kateqoriler;
+use Illuminate\Support\Facades\Http;
 
 class kitabIndexController extends Controller
 {

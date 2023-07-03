@@ -61,8 +61,11 @@ class AuthController extends Controller
     public function dashboard()
     {
         if (\Illuminate\Support\Facades\Auth::check()) {
+            // $user=User::all();
+
             return view('auth.dashboard');
         }
+
 
         return redirect("login")->withSuccess('Opps! You do not have access');
     }
