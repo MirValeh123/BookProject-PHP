@@ -14,7 +14,7 @@
                             <p class="card-category">{{$data[0]['name']}}</p>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.yayinevi.edit.post',['id'=>$data[0]['id']]) }}" method="POST">
+                            <form action="{{ route('customAdmin.yayinevi.edit.post',['id'=>$data[0]['id']]) }}" method="POST">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-md-12">

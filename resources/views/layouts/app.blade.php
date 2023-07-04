@@ -45,7 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         @auth
                             <div class="box">
                                 <a style="color: white;text-decoration:none"
-                                    href="{{route('dashboard')}}">{{ Illuminate\Support\Facades\Auth::user()->name }}</a>
+                                    href="{{ route('dashboard') }}">{{ Illuminate\Support\Facades\Auth::user()->name }}</a>
                             </div>
                             <div class="box">
                                 {{-- <a onclick="event.preventDefault();document.getElementById('logout-form').submit(;)"
@@ -85,7 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                             <img src="images/cart-1.png" alt="" />
                         </a>
-                        <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                        {{-- <p><a href="javascript:;" class="simpleCart_empty"></a></p> --}}
                         <div class="clearfix"> </div>
                     </div>
                 </div>
@@ -123,19 +123,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="top-nav">
                         <ul class="memenu skyblue">
                             <li class="active"><a href="{{ route('index') }}">Home</a></li>
-                            @foreach (\App\Models\Kateqoriler::all() as $key => $value)
+                            {{-- @foreach (\App\Models\Kateqoriler::all() as $key => $value)
                                 <li class="grid"><a
                                         href="{{ route('cat', ['selflink' => $value['selflink']]) }}">{{ $value['name'] }}</a>
 
                                 </li>
-                            @endforeach
+                            @endforeach --}}
+                            <!-- Display Parent and Child Categories as Select Options -->
+
+                            <!-- Display Parent and Child Categories -->
+                            <!-- Display Parent and Child Categories as Select Options -->
+                            <label for="category">Category:</label>
+                            <select class="form-select" name="category" id="category">
+                                <option value="">Select a Category</option>
+                                @foreach (\App\Models\Kateqoriler::tree() as $category)
+                                    <option value="{{ $category->id }}"><a  href="{{ route('cat', ['selflink' => $category['selflink']]) }}">{{ $category->name }}</a></option>
+                                    @if ($category->children->isNotEmpty())
+                                        @include('front.cat.child-categories', [
+                                            'children' => $category->children,
+                                            'prefix' => '-',
+                                        ])
+                                    @endif
+                                @endforeach
+                            </select>
 
 
 
 
-                            <li class="grid"><a href="typo.html">Blog</a>
-                            </li>
-                            <li class="grid"><a href="{{route("contact")}}">Contact</a>
+
+
+
+                            {{-- <li class="grid"><a href="typo.html">Blog</a> --}}
+                            {{-- </li> --}}
+                            <li class="grid"><a href="{{ route('contact') }}">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -147,6 +167,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
     <!--bottom-header-->
+    @if (session('status'))
+        <div class="alert alert-success" id="element">
+            {{ session('status') }}
+        </div>
+    @endif
 
 
     @yield('content')
@@ -227,10 +252,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="footer-top">
                 <div class="col-md-6 footer-left">
-                    <form>
-                        <input type="text" value="Enter Your Email" onfocus="this.value = '';"
+                    <form method="POST" action="{{ route('index.post') }}">
+                        @csrf
+                        <input name="email" type="text" value="Enter Your Email" onfocus="this.value = '';"
                             onblur="if (this.value == '') {this.value = 'Enter Your Email';}">
-                        <input type="submit" value="Subscribe">
+                        <button class="btn btn-success" type="submit">Subscribe</button>
                     </form>
                 </div>
                 <div class="col-md-6 footer-right">
@@ -242,4 +268,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
     <!--footer-end-->
+    <script>
+        setTimeout(() => {
+            let msg = document.getElementById('element')
+            msg.style.display = 'none';
+        }, 2000);
+    </script>
 </body>

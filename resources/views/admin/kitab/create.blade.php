@@ -14,7 +14,7 @@
                             <p class="card-category">Create Book</p>
                         </div>
                         <div class="card-body">
-                            <form enctype="multipart/form-data" action="{{ route('admin.kitab.create.post') }}"
+                            <form enctype="multipart/form-data" action="{{ route('customAdmin.kitab.create.post') }}"
                                 method="POST">
                                 {{ csrf_field() }}
                                 <div class="row">

@@ -16,7 +16,7 @@ class searchIndexController extends Controller
 
             return view('front.search.index',['data'=>$data,'num'=>$num_k]);
         } else {
-            return redirect('/');
+            return redirect('/')->with('status','Kitap yok!');
         }
         
     }

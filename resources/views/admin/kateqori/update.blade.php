@@ -15,7 +15,7 @@
                         </div>
                         <div class="card-body">
                             <form enctype="multipart/form-data"
-                                action="{{ route('admin.kateqori.edit.post', ['id' => $data[0]['id']]) }}" method="POST">
+                                action="{{ route('cutomAdmin.kateqori.edit.post', ['id' => $data[0]['id']]) }}" method="POST">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-md-12">

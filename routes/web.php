@@ -25,6 +25,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\card\addBookCardController;
 use App\Http\Controllers\comment\commentController;
 use Illuminate\Support\Facades\Request;
+use TCG\Voyager\Facades\Voyager;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,17 +51,18 @@ Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPa
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 Route::get('/', [frontIndexController::class, 'index'])->name('index');
+Route::post('/', [frontIndexController::class, 'subscribe'])->name('index.post');
 Route::get('/kateqori/{selflink}', [catIndexController::class, 'index'])->name('cat');
 Route::get('/search', [searchIndexController::class, 'index'])->name('search');
 Route::get('/contact', [ContactUsFormController::class, 'createForm'])->name('contact');
 Route::post('/contact', [ContactUsFormController::class, 'ContactUsForm'])->name('contact.store');
-Route::get('/kitap/detay/{selflink}', [frontKitapIndexController::class, 'index'])->name('kitap.detay');
+Route::get('kitap/detay/{selflink}', [frontKitapIndexController::class, 'index'])->name('kitap.detay');
 Route::post('ktap/{id}/comment', [frontKitapIndexController::class, 'store'])->name('books.store_comment');
 
 
 
 
-Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'AdminKontrol',]], function () {
+Route::group(['as' => 'customAdmin.', 'prefix' => 'customAdmin', 'middleware' => ['auth', 'AdminKontrol',]], function () {
     Route::get('/', [indexController::class, 'index'])->name('index');
     Route::group(['as' => 'yayinevi.', 'prefix' => 'yayinevi'], function () {
         Route::get('/', [adminIndexController::class, 'index'])->name('index');
@@ -132,4 +134,9 @@ Route::group(['as' => 'api.', 'prefix' => 'api'], function () {
 Route::group(['as'=>'card.','prefix'=>'card'],function(){
     Route::get('',[addBookCardController::class,'index'])->name('card_product_list');
     Route::get('add/{id}',[addBookCardController::class,'index'])->name('add_product_card');
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
 });

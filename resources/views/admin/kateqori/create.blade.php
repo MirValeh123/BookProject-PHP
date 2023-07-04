@@ -14,7 +14,7 @@
                             <p class="card-category">Create Category</p>
                         </div>
                         <div class="card-body">
-                            <form enctype="multipart/form-data" action="{{ route('admin.kateqori.create.post') }}"
+                            <form enctype="multipart/form-data" action="{{ route('customAdmin.kateqori.create.post') }}"
                                 method="POST">
                                 {{ csrf_field() }}
                                 <div class="row">
@@ -23,8 +23,15 @@
                                             <label class="bmd-label-floating">Category Name</label>
                                             <input type="text" name="name" class="form-control">
                                         </div>
-                                        
-                                        
+                                        <div class="form-group">
+                                            <select name="parent_id" id="parent_id">
+                                                <option value="">Select Parent Category</option>
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
                                     </div>
 
                                 </div>

@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8">
-                    <a href="{{route('admin.yayinevi.create')}}" class="btn btn-success" >Add New Piblisher</a>
+                    <a href="{{route('customAdmin.yayinevi.create')}}" class="btn btn-success" >Add New Piblisher</a>
 
                     @if (session('status'))
                         <div class="alert alert-primary">{{ session('status') }}</div>
@@ -46,7 +46,7 @@
                                                     <div style="display:flex;justify-content:center;width:300px"
                                                         class="alert alert-success">
                                                         <a
-                                                            href="{{ route('admin.yayinevi.edit', ['id' => $value['id']]) }}">
+                                                            href="{{ route('customAdmin.yayinevi.edit', ['id' => $value['id']]) }}">
                                                             Edit
 
                                                         </a>
@@ -57,7 +57,7 @@
                                                     <div style="display:flex;justify-content:center;width:300px"
                                                         class="alert alert-danger">
                                                         <a
-                                                            href="{{ route('admin.yayinevi.delete', ['id' => $value['id']]) }}">
+                                                            href="{{ route('customAdmin.yayinevi.delete', ['id' => $value['id']]) }}">
                                                             Delete
 
                                                         </a>

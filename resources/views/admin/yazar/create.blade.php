@@ -14,7 +14,7 @@
                             <p class="card-category">Create Author</p>
                         </div>
                         <div class="card-body">
-                            <form enctype="multipart/form-data" action="{{ route('admin.yazar.create.post') }}"
+                            <form enctype="multipart/form-data" action="{{ route('customAdmin.yazar.create.post') }}"
                                 method="POST">
                                 {{ csrf_field() }}
                                 <div class="row">

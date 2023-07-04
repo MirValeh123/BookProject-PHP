@@ -24,14 +24,15 @@ class kateqoriIndexController extends Controller
     public function create() {
         $yazar=Yazarlar::all();
         $yayinevi=YayinEvi::all();
-        return view('admin.kateqori.create',['yazar'=>$yazar,'yayinevi'=>$yayinevi]);
+        $categories=Kateqoriler::all();
+        return view('admin.kateqori.create',['yazar'=>$yazar,'yayinevi'=>$yayinevi,'categories'=>$categories]);
 
     }
     public function store(Request $request) {
         $all = $request->except('_token');
 
         $all['selflink'] = mHelper::permalink($all['name']);
-        
+
         $insert = Kateqoriler::create($all);
         if ($insert) {
             return redirect()->back()->with('Kateqori Eklendi!');

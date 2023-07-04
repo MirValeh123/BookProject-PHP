@@ -17,8 +17,11 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->string('selflink');
-            });
+
+            $table->foreign('parent_id')->references('id')->on('kateqorilers')->onDelete('cascade');
+        });
     }
 
     /**

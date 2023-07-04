@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8">
-                    <a href="{{route('admin.slider.create')}}" class="btn btn-success" >Add New Slider</a>
+                    <a href="{{route('customAdmin.slider.create')}}" class="btn btn-success" >Add New Slider</a>
 
                     @if (session('status'))
                         <div class="alert alert-primary">{{ session('status') }}</div>
@@ -46,7 +46,7 @@
                                                         <div style="display:flex;justify-content:center;width:300px"
                                                         class="alert alert-success">
                                                         <a
-                                                            href="{{ route('admin.slider.edit', ['id' => $value['id']]) }}">
+                                                            href="{{ route('customAdmin.slider.edit', ['id' => $value['id']]) }}">
                                                             Edit
 
                                                         </a>
@@ -58,7 +58,7 @@
                                                         <div style="display:flex;justify-content:center;width:300px"
                                                             class="alert alert-danger">
                                                             <a
-                                                                href="{{ route('admin.slider.delete', ['id' => $value['id']]) }}">
+                                                                href="{{ route('customAdmin.slider.delete', ['id' => $value['id']]) }}">
                                                                 Delete
 
                                                             </a>

@@ -15,7 +15,7 @@
                         </div>
                         <div class="card-body">
                             <form enctype="multipart/form-data"
-                                action="{{ route('admin.slider.edit.post', ['id' => $data[0]['id']]) }}" method="POST">
+                                action="{{ route('customAdmin.slider.edit.post', ['id' => $data[0]['id']]) }}" method="POST">
                                 {{ csrf_field() }}
                                 
 

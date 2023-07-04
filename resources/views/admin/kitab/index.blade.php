@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{route('admin.kitab.create')}}" class="btn btn-success" >Add New Book</a>  
+                    <a href="{{route('customAdmin.kitab.create')}}" class="btn btn-success" >Add New Book</a>  
                     @if (session('status'))
                         <div class="alert alert-primary">{{ session('status') }}</div>
                     @endif
@@ -63,7 +63,7 @@
                                                     <td>
                                                         <div style="display:flex;justify-content:center;width:300px"
                                                             class="alert alert-success">
-                                                            <a href="{{ route('admin.kitab.edit', ['id' => $value['id']]) }}">
+                                                            <a href="{{ route('customAdmin.kitab.edit', ['id' => $value['id']]) }}">
                                                                 Edit
 
                                                             </a>
@@ -73,7 +73,7 @@
                                                     <td>
                                                         <div style="display:flex;justify-content:center;width:300px"
                                                             class="alert alert-danger">
-                                                            <a href="{{route('admin.kitab.delete',['id'=>$value['id']])}}">
+                                                            <a href="{{route('customAdmin.kitab.delete',['id'=>$value['id']])}}">
                                                                 Delete
 
                                                             </a>

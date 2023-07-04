@@ -11,37 +11,37 @@ Tip 2: you can also add an image using data-image tag-->
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="nav-item active ">
-                <a class="nav-link" href="{{route('admin.index')}}">
+                <a class="nav-link" href="{{route('customAdmin.index')}}">
                     <i class="material-icons">dashboard</i>
                     <p>Dashboard</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="{{route('admin.yayinevi.index')}}">
+                <a class="nav-link" href="{{route('customAdmin.yayinevi.index')}}">
                     <i class="material-icons">person</i>
                     <p>Publishers</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="{{route('admin.yazar.index')}}">
+                <a class="nav-link" href="{{route('customAdmin.yazar.index')}}">
                     <i class="material-icons">content_paste</i>
                     <p>Authors</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="{{route('admin.kateqori.index')}}">
+                <a class="nav-link" href="{{route('customAdmin.kateqori.index')}}">
                     <i class="material-icons">library_books</i>
                     <p>Categories</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="{{route('admin.kitab.index')}}">
+                <a class="nav-link" href="{{route('customAdmin.kitab.index')}}">
                     <i class="material-icons">bubble_chart</i>
                     <p>Books</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="{{route('admin.slider.index')}}">
+                <a class="nav-link" href="{{route('customAdmin.slider.index')}}">
                     <i class="material-icons">location_ons</i>
                     <p>Sliders</p>
                 </a>

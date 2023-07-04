@@ -14,7 +14,7 @@
                             <p class="card-category">Add New Publisher</p>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.yayinevi.create.post') }}" method="POST">
+                            <form action="{{ route('customAdmin.yayinevi.create.post') }}" method="POST">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-md-12">

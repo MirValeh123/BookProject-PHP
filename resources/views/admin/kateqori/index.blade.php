@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8">
-                    <a href="{{ route('admin.kateqori.create') }}" class="btn btn-success">Yeni Kateqori Ekle</a>
+                    <a href="{{ route('customAdmin.kateqori.create') }}" class="btn btn-success">Yeni Kateqori Ekle</a>
 
                     @if (session('status'))
                         <div class="alert alert-primary">{{ session('status') }}</div>
@@ -54,7 +54,7 @@
                                                         <div style="display:flex;justify-content:center;width:300px"
                                                         class="alert alert-success">
                                                         <a
-                                                            href="{{ route('admin.kateqori.edit', ['id' => $value['id']]) }}">
+                                                            href="{{ route('customAdmin.kateqori.edit', ['id' => $value['id']]) }}">
                                                             Edit
 
                                                         </a>
@@ -66,7 +66,7 @@
                                                         <div style="display:flex;justify-content:center;width:300px"
                                                             class="alert alert-danger">
                                                             <a
-                                                                href="{{ route('admin.kateqori.delete', ['id' => $value['id']]) }}">
+                                                                href="{{ route('customAdmin.kateqori.delete', ['id' => $value['id']]) }}">
                                                                 Delete
 
                                                             </a>
@@ -113,7 +113,7 @@
                                         type="submit"><a
                                             style="color: white;
                                         font-size: 16px;"
-                                            href="{{ route('admin.kateqori.create') }}">Add</a></button>
+                                            href="{{ route('customAdmin.kateqori.create') }}">Add</a></button>
 
                                 </div>
                             </div>

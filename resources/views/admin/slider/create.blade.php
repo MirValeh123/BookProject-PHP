@@ -14,7 +14,7 @@
                             <p class="card-category">Create Slider</p>
                         </div>
                         <div class="card-body">
-                            <form enctype="multipart/form-data" action="{{ route('admin.slider.create.post') }}"
+                            <form enctype="multipart/form-data" action="{{ route('customAdmin.slider.create.post') }}"
                                 method="POST">
                                 {{ csrf_field() }}
                                 <div class="row">

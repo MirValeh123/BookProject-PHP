@@ -15,7 +15,7 @@
                         </div>
                         <div class="card-body">
                             <form enctype="multipart/form-data"
-                                action="{{ route('admin.kitab.edit.post', ['id' => $data[0]['id']]) }}" method="POST">
+                                action="{{ route('customAdmin.kitab.edit.post', ['id' => $data[0]['id']]) }}" method="POST">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-md-12">
