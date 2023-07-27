@@ -56,7 +56,7 @@
                                         <li><a href="#"><i> </i></a></li>
                                     </ul>
                                     <div class="review">
-                                        <p> {{ $data[0]->comments->count() }} customer review </p>
+                                        {{-- <p> {{ $data[0]->comments->count() }} customer review </p> --}}
 
                                     </div>
                                     <div class="clearfix"> </div>
@@ -96,7 +96,7 @@
                     @endif
                     <div class="container">
                         <div class="row">
-
+                            {{-- 
                             <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
                                 <form id="algin-form" method="POST"
                                     action="{{ route('books.store_comment', $data[0]->id) }}">
@@ -114,14 +114,18 @@
                                             Comment</button>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="col-sm-5 col-md-6 col-12 pb-4">
                             <h1>Comments</h1>
-                            @foreach ($data[0]->comments as $comment)
+                            @include('front.kitap.comment.commentsDisplay', [
+                                'comments' => $data[0]->comments,
+                                'kitap_id' => $data[0]->id,
+                            ])
+
+                            {{-- @foreach ($data[0]->comments as $comment)
                                 <div class="comment mt-4 text-justify float-left">
-                                    {{-- <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle"
-                                        width="40" height="40"> --}}
+                                   
                                     <h4>{{ $comment->user->name }}</h4>
                                     <span>{{ $comment->created_at }}</span>
                                     <br>
@@ -129,7 +133,22 @@
                                     </p>
                                 </div>
                                 <hr>
-                            @endforeach
+                            @endforeach --}}
+                            <h4>Add comment</h4>
+                            <form method="post" action="{{ route('books.store_comment', $data[0]->id) }}">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea name="content" id=""msg cols="30" rows="5" class="form-control"></textarea>   
+                                    <input type="hidden" name="kitap_id" value="{{ $data[0]->id }}" />
+                                    <input type="hidden" name="parent_id" value="{{ $data[0]->parent_id }}" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-success" value="Add Comment" />
+                                </div>
+                            </form>
+                           
+
 
 
 

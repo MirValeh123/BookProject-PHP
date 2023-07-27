@@ -52,7 +52,7 @@ Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showRese
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 Route::get('/', [frontIndexController::class, 'index'])->name('index');
 Route::post('/', [frontIndexController::class, 'subscribe'])->name('index.post');
-Route::get('/kateqori/{selflink}', [catIndexController::class, 'index'])->name('cat');
+Route::get('/kateqori/{selflink}', [catIndexController::class, 'show'])->name('cat');
 Route::get('/search', [searchIndexController::class, 'index'])->name('search');
 Route::get('/contact', [ContactUsFormController::class, 'createForm'])->name('contact');
 Route::post('/contact', [ContactUsFormController::class, 'ContactUsForm'])->name('contact.store');

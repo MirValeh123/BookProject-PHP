@@ -7,24 +7,25 @@ use App\Http\Controllers\Controller;
 use App\Models\Kitaplar;
 use Illuminate\Http\Request;
 
-class commentController extends Controller
-{
-    public function store(Request $request, $id)
-    {
+// class commentController extends Controller
+// {
+//     public function store(Request $request, $id)
+//     {
 
-        $comment = new comment();
-        $comment->user_id = auth()->id();
-        $comment->kitap_id = $id;
-        $comment->content = $request->input('content');
+//         $comment = new comment();
+//         $comment->user_id = auth()->id();
+//         $comment->kitap_id = $id;
+//         $comment->content = $request->input('content');
+//         $comment->parent_id = $request->input('parent_id');
+        
+//         $comment->save();
+//         return redirect()->back();
+//     }
 
-        $comment->save();
-        return redirect()->back();
-    }
-
-    public function show($id)
-    {
-        $product = Kitaplar::with('comments')->findOrFail($id);
-        dd($product);
-        return view('kitap.detay.comment', compact('product'));
-    }
-}
+//     public function show($id)
+//     {
+//         $product = Kitaplar::with('comments')->findOrFail($id);
+//         // dd($product);
+//         return view('kitap.detay.comment', compact('product'));
+//     }
+// }

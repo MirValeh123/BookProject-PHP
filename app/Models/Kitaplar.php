@@ -17,6 +17,6 @@ class Kitaplar extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class,'kitap_id');
+        return $this->hasMany(Comment::class,'kitap_id')->whereNull('parent_id');
     }
 }

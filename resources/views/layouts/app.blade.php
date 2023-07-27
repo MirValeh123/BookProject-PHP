@@ -48,12 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     href="{{ route('dashboard') }}">{{ Illuminate\Support\Facades\Auth::user()->name }}</a>
                             </div>
                             <div class="box">
-                                {{-- <a onclick="event.preventDefault();document.getElementById('logout-form').submit(;)"
-                                    style="color: white;text-decoration:none" href="{{ route('logout') }}">Çıkış Yap</a> --}}
-                                {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                    {{ csrf_field() }}
-                                    <button class="btn btn-danger" type="submit">@lang('messages.logout')</button>
-                                </form> --}}
+                                
                                 <div class="box">
                                     <a style="color: white;text-decoration:none" href="{{ route('logout') }}">Logout</a>
                                 </div>
@@ -67,12 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <a href="{{ route('register') }}" style="color: white;text-decoration:none">SignUp</a>
                             </div>
                         @endguest
-                        {{-- <div class="box">
-                            <a href="{{url('/az')}}" style="color: white;text-decoration:none">Az</a>
-                        </div>
-                        <div class="box">
-                            <a href="{{url('/en')}}" style="color: white;text-decoration:none">En</a>
-                        </div> --}}
+                       
 
                         <div class="clearfix"></div>
                     </div>
@@ -137,7 +127,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <select class="form-select" name="category" id="category">
                                 <option value="">Select a Category</option>
                                 @foreach (\App\Models\Kateqoriler::tree() as $category)
-                                    <option value="{{ $category->id }}"><a  href="{{ route('cat', ['selflink' => $category['selflink']]) }}">{{ $category->name }}</a></option>
+                                    <option value="{{ $category->id }}"><a  href="{{ route('cat', ['selflink' => $category['selflink'],'category_id' => $category->id]) }}">{{ $category->name }}</a></option>
                                     @if ($category->children->isNotEmpty())
                                         @include('front.cat.child-categories', [
                                             'children' => $category->children,

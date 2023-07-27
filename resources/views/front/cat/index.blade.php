@@ -11,8 +11,8 @@
 
                     </div>
                 @endif
-                @if ($num != 0)
-                    @foreach ($data->chunk(4) as $chunk)
+                {{-- @if ($num != 0) --}}
+                    @foreach ($filteredData->chunk(4) as $chunk)
                         <div class="product-one">
                             @foreach ($chunk as $value)
                                 <div class="col-md-3 product-left">
@@ -39,10 +39,10 @@
                         </div>
                     @endforeach
 
-                @else
-                        <div class="alert alert-danger">Book Not Found.....</div>
+                {{-- @else --}}
+                        {{-- <div class="alert alert-danger">Book Not Found.....</div>
 
-                @endif
+                @endif --}}
 
 
             </div>
